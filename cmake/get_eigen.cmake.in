@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.5)
+
+project(eigen-download NONE)
+
+include(ExternalProject)
+ExternalProject_Add(eigen
+  URL               https://bitbucket.org/eigen/eigen/get/3.3.7.tar.gz
+  URL_HASH          SHA256=7e84ef87a07702b54ab3306e77cea474f56a40afa1c0ab245bb11725d006d0da
+  SOURCE_DIR        "${CMAKE_CURRENT_BINARY_DIR}/eigen-src"
+  BINARY_DIR        "${CMAKE_CURRENT_BINARY_DIR}/eigen-build"
+  # configure phase
+  CMAKE_ARGS        "-DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/eigen-build"
+)

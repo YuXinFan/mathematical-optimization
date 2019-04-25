@@ -1,0 +1,10 @@
+.idea
+.vscode
+.DS_Store
+
+[Bb]uild
+cmake-*
+
+*.o
+*.a
+*.so

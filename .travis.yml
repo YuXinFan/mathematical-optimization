@@ -1,0 +1,9 @@
+language: cpp
+dist: xenial
+compiler:
+  - gcc  # GCC 5.4.0
+os:
+  - linux
+script:
+  - mkdir build && cd build && cmake .. && make -j 4 all
+  - make test
