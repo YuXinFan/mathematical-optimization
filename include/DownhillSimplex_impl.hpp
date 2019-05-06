@@ -51,19 +51,20 @@ int DownhillSimplex<OBJECTIVEFUNCTION>::minimize(InputType & input) {
     // Do one times operation on downhill simplex
     iteration(std::ref(vertices), xm, std::ref(ternimate));
 
-    input = before;
+    
     // Stop condition check
     InputType now = vertices.front();
+    input = now;
     if ( now == before ) {
       // most time the first vertex do not change
     }else if ( (now-before).norm() < _xtol ) {
       return 1;
-    }else if (abs( _objectiveFunction.energy(now) - _objectiveFunction.energy(before)) < _ftol) {
+    }else if (fabs( _objectiveFunction.energy(now) - _objectiveFunction.energy(before)) < _ftol) {
       return 2;
     }
     // Restart the simplex because it may converage to local region minimize
     // restart makes it overcome the local region minimize
-    if ( abs(_objectiveFunction.energy(vertices.front()) - _objectiveFunction.energy(vertices.back())) < _xtol) {
+    if ( fabs(_objectiveFunction.energy(vertices.front()) - _objectiveFunction.energy(vertices.back())) < _xtol) {
       restart(vertices);
     }
   }

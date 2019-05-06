@@ -1,5 +1,5 @@
 #include "LevenbergMarquardt.hpp"
-#define show(s, x)  std::cout<<s<<"\n"<<x<<std::endl;
+
 template<typename OBJECTIVEFUNCTION>
 LevenbergMarquardt<OBJECTIVEFUNCTION>::LevenbergMarquardt(
     ObjectiveFunction & objectiveFunction,
@@ -56,13 +56,13 @@ int LevenbergMarquardt<OBJECTIVEFUNCTION>::minimize(InputType &input) {
       h = jac.transpose() * value;
       // Stop condition check
       if ( h.norm() < 0.0001 ) {
-        break;
+        return 1;
       }
-      if ( abs(energy_new - energy) < _ftol ) {
-        break;
+      if ( fabs(energy_new - energy) < _ftol ) {
+        return 2;
       }
       if (hlm.norm() < _xtol ) {
-        break;
+        return 1;
       }
       // Update trust region size 
       double update = (1-(2*q-1)*(2*q-1)*(2*q-1));

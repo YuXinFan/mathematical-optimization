@@ -34,7 +34,7 @@ int GaussNewton<OBJECTIVEFUNCTION>::minimize( InputType & input ) {
     Scalar energy_new = _objectiveFunction.energy(x_new);
     x = x_new;
     // Stop condition check
-    if (abs(energy_new-energy) < _ftol) {
+    if (fabs(energy_new-energy) < _ftol) {
       return 2;
     }
     if (energy_new < _ftol) {
@@ -52,7 +52,7 @@ double GaussNewton<OBJECTIVEFUNCTION>::lineSearch( InputType x, InputType h) {
   // Pre define
   double left{0}, right{1.f}, mid{0}, tau{0.1};
   double norm = h.norm();
-  double condition = abs(lineSearchDF(x,h, 0) * tau);
+  double condition = fabs(lineSearchDF(x,h, 0) * tau);
   while (lineSearchDF(x,h, right) <= 0) {
     right *= 2;
   }
@@ -68,10 +68,10 @@ double GaussNewton<OBJECTIVEFUNCTION>::lineSearch( InputType x, InputType h) {
       return mid;
     }
     // Stop condition check
-    if (abs(df) <= condition) {
+    if (fabs(df) <= condition) {
       break;
     }
-    if (abs(df) < 0.1) {
+    if (fabs(df) < 0.1) {
       break;
     }
   }

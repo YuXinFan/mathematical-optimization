@@ -20,7 +20,7 @@ typename NumDiff<FUNCTOR, mode>::JacobianType NumDiff<FUNCTOR, mode>::df(const I
   
   if ( mode == Central ){
     if ( _epsfcn == 0. ) {
-    _epsfcn = 1e-9;
+    _epsfcn = 1e-10;
     }
     for (auto i = 0; i < x.size(); i++) {
       InputType x_left = x;
@@ -33,7 +33,7 @@ typename NumDiff<FUNCTOR, mode>::JacobianType NumDiff<FUNCTOR, mode>::df(const I
     }
   }else {
     if ( _epsfcn == 0. ) {
-    _epsfcn = 1e-9;
+    _epsfcn = 1e-10;
     }
     InputType x_this = x;
     ValueType value_this = this->operator()(x);
