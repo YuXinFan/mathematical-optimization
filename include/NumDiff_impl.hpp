@@ -1,5 +1,5 @@
 #include "NumDiff.hpp"
-#define show(s, x)  std::cout<<s<<"\n"<<x<<std::endl;
+
 template<typename FUNCTOR, NumDiffMode mode>
 NumDiff<FUNCTOR, mode>::NumDiff(const Functor &f, Scalar epsfcn): FUNCTOR(f) {
   _epsfcn = epsfcn;

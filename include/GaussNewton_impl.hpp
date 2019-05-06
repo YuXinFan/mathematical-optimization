@@ -1,5 +1,6 @@
 #include "GaussNewton.hpp"
-#define show(s, x)  std::cout<<s<<"\n"<<x<<std::endl;
+
+
 template<typename OBJECTIVEFUNCTION>
 GaussNewton<OBJECTIVEFUNCTION>::GaussNewton(
     ObjectiveFunction & objectiveFunction,

@@ -1,6 +1,6 @@
 #include "GradientDescent.hpp"
 #include <Eigen/QR>
-#define show(s, x)  std::cout<<s<<"\n"<<x<<std::endl;
+
 
 template<typename OBJECTIVEFUNCTION>
 GradientDescent<OBJECTIVEFUNCTION>::GradientDescent(

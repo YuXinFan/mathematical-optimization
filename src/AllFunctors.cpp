@@ -1,5 +1,4 @@
 #include "AllFunctors.hpp"
-
 #include "functions.hpp"
 
 RosenbrockFunctor::RosenbrockFunctor() {}

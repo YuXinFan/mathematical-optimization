@@ -1,6 +1,6 @@
 #include "DownhillSimplex.hpp"
 
-#define show(x,y) std::cout << x<<'\n'<<y<<"\n"<<std::endl;
+
 template<typename OBJECTIVEFUNCTION>
 DownhillSimplex<OBJECTIVEFUNCTION>::DownhillSimplex(
       ObjectiveFunction & objectiveFunction,
