@@ -25,6 +25,12 @@ class DownhillSimplex {
   //               2 if finished because of norm(energyBefore-energyAfter) < ftol
   int minimize( InputType & input );
 
+  bool sortByEnergy(InputType &a, InputType &b);
+  InputType averageExceptWorst(const std::list<InputType> & vers);
+  void iteration(std::list<InputType> &vers, InputType xm, bool & terminate);
+  void shrink(std::list<InputType> & vs);
+  void restart(std::list<InputType> & vs);
+
 private:
   ObjectiveFunction & _objectiveFunction;
 

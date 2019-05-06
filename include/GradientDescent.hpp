@@ -25,6 +25,8 @@ class GradientDescent {
   //               2 if finished because of norm(energyBefore-energyAfter) < ftol
   int minimize( InputType & input );
 
+  double lineSearch( InputType & input, InputType &grad);
+  double lineSearchDF(InputType & input, InputType &grad, double alpha);
 private:
   ObjectiveFunction & _objectiveFunction;
 

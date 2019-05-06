@@ -24,6 +24,8 @@ class GaussNewton {
   //               1 if finished because of norm(step) < xtol
   //               2 if finished because of norm(energyBefore-energyAfter) < ftol
   int minimize( InputType & input );
+  double lineSearch( InputType x, InputType h);
+  double lineSearchDF(InputType x, InputType h , double alpha);
 
 private:
   ObjectiveFunction & _objectiveFunction;
