@@ -24,6 +24,7 @@ PowellFunctor::JacobianType PowellFunctor::df(const InputType &x) {
 }
 
 WeberFunctor::WeberFunctor(const std::list<Eigen::VectorXd> &ps):
+    OptFunctor(ps.front().size(),ps.size()),
     _ps(ps) {}
 WeberFunctor::~WeberFunctor() {}
 

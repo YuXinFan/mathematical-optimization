@@ -7,18 +7,9 @@ NumDiff<FUNCTOR, mode>::NumDiff(const Functor &f, Scalar epsfcn): FUNCTOR(f) {
 
 template<typename FUNCTOR, NumDiffMode mode>
 typename NumDiff<FUNCTOR, mode>::JacobianType NumDiff<FUNCTOR, mode>::df(const InputType &x) {
-  ValueType val = this->operator()(x);
-  // Call df(x, val) due to Dynamic JacobianType need 
-  // both InputType and ValueType to init
-  JacobianType jac = df(x, val);
-  return jac;
-}
-
-template<typename FUNCTOR, NumDiffMode mode>
-typename NumDiff<FUNCTOR, mode>::JacobianType NumDiff<FUNCTOR, mode>::df(const InputType &x, const ValueType &val) {
-  JacobianType jac(val.size(), x.size());
-  
-  if ( mode == Central ){
+  JacobianType jac(this->values(), this->inputs());
+  // Calculate Central numdiff
+  if ( mode == Central ) {
     if ( _epsfcn == 0. ) {
     _epsfcn = 1e-10;
     }
@@ -32,17 +23,32 @@ typename NumDiff<FUNCTOR, mode>::JacobianType NumDiff<FUNCTOR, mode>::df(const I
       jac.col(i) = (value_right-value_left)/(2*_epsfcn);
     }
   }else {
+    // Call df(x, val) if need Forward numdiff
+    ValueType val = this->operator()(x);
+    jac = df(x, val);
+  }
+  
+  return jac;
+}
+
+template<typename FUNCTOR, NumDiffMode mode>
+typename NumDiff<FUNCTOR, mode>::JacobianType NumDiff<FUNCTOR, mode>::df(const InputType &x, const ValueType &val) {
+  JacobianType jac(this->values(), this->inputs());
+  // Calculate Forward numdiff
+  if ( mode == Forward ) {
     if ( _epsfcn == 0. ) {
-    _epsfcn = 1e-10;
+      _epsfcn = 1e-10;
     }
     InputType x_this = x;
-    ValueType value_this = this->operator()(x);
     for (auto i = 0; i < x.size(); i++) {
       InputType x_forward = x;    
       x_forward(i) += _epsfcn; 
       ValueType value_forward = this->operator()(x_forward);
-      jac.col(i) = (value_forward-value_this)/(_epsfcn);
+      jac.col(i) = (value_forward-val)/(_epsfcn);
     }
+  }else {
+    // Call df(x) if need central numdiff
+    jac = df(x);
   }
   return jac;
 }

@@ -2,7 +2,7 @@
 
 Name | Stu. ID | Travis Stat.
 -----|---------|-------------
-YOUR NAME | YOUR ID. | YOUR STAT.
+Fan Yuxin | 57881161 | [![Build Status](https://travis-ci.com/sht-cs133/hw5-6-mathematical-optimization-YuXinFan.svg?token=appyqywAiysphxXppp9y&branch=master)](https://travis-ci.com/sht-cs133/hw5-6-mathematical-optimization-YuXinFan)
 
 ## Notices
 
