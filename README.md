@@ -1,8 +1,6 @@
-# CS133 HW5/6: Mathematical Optimization
-
-Name | Stu. ID | Travis Stat.
------|---------|-------------
-Fan Yuxin | 57881161 | [![Build Status](https://travis-ci.com/sht-cs133/hw5-6-mathematical-optimization-YuXinFan.svg?token=appyqywAiysphxXppp9y&branch=master)](https://travis-ci.com/sht-cs133/hw5-6-mathematical-optimization-YuXinFan)
+Buind Status.
+-------------
+[![Build Status](https://travis-ci.com/sht-cs133/hw5-6-mathematical-optimization-YuXinFan.svg?token=appyqywAiysphxXppp9y&branch=master)](https://travis-ci.com/sht-cs133/hw5-6-mathematical-optimization-YuXinFan)
 
 ## Notices
 
@@ -30,4 +28,4 @@ Fan Yuxin | 57881161 | [![Build Status](https://travis-ci.com/sht-cs133/hw5-6-ma
    e.g. helper functions and numerical differentiations. Don't forget to add them
    to `CMakeList.txt`.
 
-> Start early and happy coding~
+
